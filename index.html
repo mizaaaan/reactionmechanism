@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="বিক্রিয়ার কৌশল — জাতীয় বিশ্ববিদ্যালয় অনার্স চতুর্থ বর্ষ রসায়ন স্টাডি গাইড">
+<meta property="og:title" content="বিক্রিয়ার কৌশল — অনার্স চতুর্থ বর্ষ">
+<meta property="og:description" content="Reaction Mechanism সম্পূর্ণ অধ্যায়ভিত্তিক স্টাডি গাইড">
+<title>বিক্রিয়ার কৌশল — অনার্স চতুর্থ বর্ষ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&family=Noto+Sans+Bengali:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e1a;
+    --surface: #111827;
+    --surface2: #1a2235;
+    --accent1: #38bdf8;
+    --accent2: #a78bfa;
+    --accent3: #34d399;
+    --accent4: #fb923c;
+    --accent5: #f472b6;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: rgba(255,255,255,0.08);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans Bengali', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 10% 20%, rgba(56,189,248,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(167,139,250,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(52,211,153,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, rgba(56,189,248,0.08), rgba(167,139,250,0.08));
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease both;
+  }
+  .header::after {
+    content: '⚗️';
+    position: absolute;
+    font-size: 180px;
+    opacity: 0.04;
+    bottom: -20px;
+    right: -10px;
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(56,189,248,0.15);
+    color: var(--accent1);
+    border: 1px solid rgba(56,189,248,0.3);
+    padding: 5px 18px;
+    border-radius: 50px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .header h1 {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.3;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+  .header p { color: var(--muted); font-size: 15px; }
+
+  /* ── TOC ── */
+  .toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 50px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .toc h2 {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 18px;
+    color: var(--accent3);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 8px;
+  }
+  .toc-list li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 7px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .toc-list li a:hover { color: var(--text); background: var(--surface2); }
+  .toc-list li a .num {
+    background: rgba(56,189,248,0.12);
+    color: var(--accent1);
+    min-width: 28px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  /* ── Chapter card ── */
+  .chapter {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    margin-bottom: 36px;
+    overflow: hidden;
+    animation: fadeUp 0.7s ease both;
+    transition: box-shadow 0.3s;
+  }
+  .chapter:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.3); }
+
+  .chapter-header {
+    padding: 24px 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .chapter.open .chapter-header { border-bottom-color: var(--border); }
+  .chapter-header:hover { background: rgba(255,255,255,0.02); }
+
+  .ch-icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .ch-title { flex: 1; }
+  .ch-num { font-size: 11px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
+  .ch-name { font-family: 'Noto Serif Bengali', serif; font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .toggle-icon { color: var(--muted); font-size: 18px; transition: transform 0.3s; }
+  .chapter.open .toggle-icon { transform: rotate(180deg); }
+
+  .chapter-body { display: none; padding: 28px 30px; }
+  .chapter.open .chapter-body { display: block; }
+
+  /* ── Content ── */
+  .section-title {
+    font-family: 'Noto Serif Bengali', serif;
+    font-size: 16px; font-weight: 600;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent1);
+  }
+  .section-title:first-child { margin-top: 0; }
+
+  p.body-text { font-size: 14.5px; line-height: 1.85; color: #cbd5e1; margin-bottom: 14px; }
+
+  .highlight-box {
+    background: rgba(56,189,248,0.06);
+    border: 1px solid rgba(56,189,248,0.18);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #bfdbfe;
+  }
+  .highlight-box.green  { background: rgba(52,211,153,0.06);  border-color: rgba(52,211,153,0.18);  color: #a7f3d0; }
+  .highlight-box.purple { background: rgba(167,139,250,0.06); border-color: rgba(167,139,250,0.18); color: #ddd6fe; }
+  .highlight-box.orange { background: rgba(251,146,60,0.06);  border-color: rgba(251,146,60,0.18);  color: #fed7aa; }
+  .highlight-box.pink   { background: rgba(244,114,182,0.06); border-color: rgba(244,114,182,0.18); color: #fbcfe8; }
+  .highlight-box strong { display: block; margin-bottom: 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .5px; opacity: .8; }
+
+  .steps { counter-reset: step; list-style: none; margin: 12px 0; }
+  .steps li {
+    counter-increment: step;
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-bottom: 12px; font-size: 14px; line-height: 1.75; color: #cbd5e1;
+  }
+  .steps li::before {
+    content: counter(step);
+    background: rgba(56,189,248,0.15); color: var(--accent1);
+    width: 26px; height: 26px; min-width: 26px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; margin-top: 2px;
+  }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .tag-item { padding: 5px 14px; border-radius: 50px; font-size: 13px; border: 1px solid; font-weight: 500; }
+  .tag-item.blue   { background: rgba(56,189,248,0.1);  color: var(--accent1); border-color: rgba(56,189,248,0.25); }
+  .tag-item.green  { background: rgba(52,211,153,0.1);  color: var(--accent3); border-color: rgba(52,211,153,0.25); }
+  .tag-item.purple { background: rgba(167,139,250,0.1); color: var(--accent2); border-color: rgba(167,139,250,0.25); }
+  .tag-item.orange { background: rgba(251,146,60,0.1);  color: var(--accent4); border-color: rgba(251,146,60,0.25); }
+  .tag-item.pink   { background: rgba(244,114,182,0.1); color: var(--accent5); border-color: rgba(244,114,182,0.25); }
+
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  .compare-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .compare-card h4 { font-size: 13px; font-weight: 600; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .compare-card ul { list-style: none; font-size: 13px; color: var(--muted); line-height: 1.9; }
+  .compare-card ul li::before { content: '▸ '; opacity: .5; }
+
+  .formula {
+    background: #0d1117;
+    border: 1px solid rgba(56,189,248,0.2);
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px; color: var(--accent1);
+    margin: 12px 0; text-align: center; letter-spacing: .5px;
+  }
+
+  .exam-tip {
+    background: linear-gradient(135deg, rgba(251,146,60,0.08), rgba(244,114,182,0.08));
+    border: 1px solid rgba(251,146,60,0.2);
+    border-radius: 12px;
+    padding: 16px 20px; margin: 16px 0;
+    font-size: 13.5px; color: #fde68a; line-height: 1.75;
+  }
+  .exam-tip::before { content: '📝 পরীক্ষার টিপস: '; font-weight: 700; color: var(--accent4); }
+
+  /* ── Per-chapter colour theming ── */
+  .c1 .ch-icon { background: rgba(56,189,248,0.12); }
+  .c2 .ch-icon { background: rgba(167,139,248,0.12); }
+  .c3 .ch-icon { background: rgba(52,211,153,0.12); }
+  .c4 .ch-icon { background: rgba(251,146,60,0.12); }
+  .c5 .ch-icon { background: rgba(244,114,182,0.12); }
+  .c6 .ch-icon { background: rgba(251,191,36,0.12); }
+  .c7 .ch-icon { background: rgba(239,68,68,0.12); }
+
+  .c1 .ch-num,.c1 .section-title { color: var(--accent1); }
+  .c2 .ch-num,.c2 .section-title { color: var(--accent2); }
+  .c3 .ch-num,.c3 .section-title { color: var(--accent3); }
+  .c4 .ch-num,.c4 .section-title { color: var(--accent4); }
+  .c5 .ch-num,.c5 .section-title { color: var(--accent5); }
+  .c6 .ch-num,.c6 .section-title { color: #fbbf24; }
+  .c7 .ch-num,.c7 .section-title { color: #f87171; }
+
+  .c1 .ch-name { color: #bae6fd; }
+  .c2 .ch-name { color: #ddd6fe; }
+  .c3 .ch-name { color: #a7f3d0; }
+  .c4 .ch-name { color: #fed7aa; }
+  .c5 .ch-name { color: #fbcfe8; }
+  .c6 .ch-name { color: #fef3c7; }
+  .c7 .ch-name { color: #fecaca; }
+
+  .c1 .section-title { border-left-color: var(--accent1); }
+  .c2 .section-title { border-left-color: var(--accent2); }
+  .c3 .section-title { border-left-color: var(--accent3); }
+  .c4 .section-title { border-left-color: var(--accent4); }
+  .c5 .section-title { border-left-color: var(--accent5); }
+  .c6 .section-title { border-left-color: #fbbf24; }
+  .c7 .section-title { border-left-color: #f87171; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center; color: var(--muted); font-size: 13px;
+    padding: 40px 0 20px;
+    border-top: 1px solid var(--border); margin-top: 20px;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .compare-grid { grid-template-columns: 1fr; }
+    .chapter-header { padding: 18px 20px; }
+    .chapter-body { padding: 20px; }
+    .toc { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="badge">জাতীয় বিশ্ববিদ্যালয় · অনার্স চতুর্থ বর্ষ · রসায়ন</div>
+    <h1>বিক্রিয়ার কৌশল</h1>
+    <p>Reaction Mechanism — সম্পূর্ণ অধ্যায়ভিত্তিক স্টাডি গাইড</p>
+  </header>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="বিষয়সূচি">
+    <h2>📚 বিষয়সূচি</h2>
+    <ul class="toc-list">
+      <li><a href="#ch1"><span class="num">১.১</span> নিউক্লিওফিলিক প্রতিস্থাপন</a></li>
+      <li><a href="#ch12"><span class="num">১.২</span> ইলেকট্রোফিলিক প্রতিস্থাপন</a></li>
+      <li><a href="#ch13"><span class="num">১.৩</span> ইলেকট্রোফিলিক সংযোজন</a></li>
+      <li><a href="#ch14"><span class="num">১.৪</span> জারণ-বিজারণ বিক্রিয়া</a></li>
+      <li><a href="#ch2"><span class="num">২</span> সংযোজন বিক্রিয়া</a></li>
+      <li><a href="#ch3"><span class="num">৩</span> অপসারণ বিক্রিয়া</a></li>
+      <li><a href="#ch4"><span class="num">৪</span> আণবিক পুনর্বিন্যাস</a></li>
+      <li><a href="#ch5"><span class="num">৫</span> কনফরমেশনাল বিশ্লেষণ</a></li>
+      <li><a href="#ch6"><span class="num">৬</span> আণবিক অরবিটাল তত্ত্ব</a></li>
+      <li><a href="#ch7"><span class="num">৭</span> অরবিটাল প্রতিসাম্যতা</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══════════ CHAPTER 1.1 ══════════ -->
+  <article class="chapter c1 open" id="ch1">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="true">
+      <div class="ch-icon">🔄</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ১.১</div>
+        <div class="ch-name">নিউক্লিওফিলিক প্রতিস্থাপন বিক্রিয়া (Nucleophilic Substitution)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">সংজ্ঞা ও মূল ধারণা</div>
+      <p class="body-text">নিউক্লিওফিলিক প্রতিস্থাপন বিক্রিয়ায় একটি নিউক্লিওফাইল (ইলেকট্রন-সমৃদ্ধ প্রজাতি) একটি ইলেকট্রনপ্রিয় কার্বনে আক্রমণ করে এবং leaving group (বিচ্ছিন্নকারী দল) সরিয়ে দেয়।</p>
+      <div class="highlight-box">
+        <strong>⚡ মূল সমীকরণ</strong>
+        Nu⁻ + R–L → R–Nu + L⁻<br>(Nu = নিউক্লিওফাইল, L = leaving group)
+      </div>
+
+      <div class="section-title">SN2 বিক্রিয়া</div>
+      <p class="body-text">Bimolecular Nucleophilic Substitution — একই ধাপে নিউক্লিওফাইলের আক্রমণ এবং leaving group-এর বিচ্ছেদ ঘটে।</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent3)">বৈশিষ্ট্য</h4>
+          <ul>
+            <li>Backside attack (পেছন থেকে আক্রমণ)</li>
+            <li>Walden Inversion (বিন্যাস উলটে যায়)</li>
+            <li>২য় ক্রম গতিবিদ্যা</li>
+            <li>একটি মাত্র ট্রানজিশন অবস্থা</li>
+            <li>কোনো কার্বোক্যাটায়ন মধ্যবর্তী নেই</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent1)">অনুকূল শর্ত</h4>
+          <ul>
+            <li>Primary (1°) সাবস্ট্রেট</li>
+            <li>Strong nucleophile</li>
+            <li>Polar aprotic দ্রাবক</li>
+            <li>কম বাধামুক্ত কার্বন</li>
+          </ul>
+        </div>
+      </div>
+      <div class="formula">Rate = k[Substrate][Nucleophile]</div>
+
+      <div class="section-title">SN1 বিক্রিয়া</div>
+      <p class="body-text">Unimolecular Nucleophilic Substitution — দুই ধাপে সম্পন্ন হয়। প্রথমে কার্বোক্যাটায়ন তৈরি, তারপর নিউক্লিওফাইলের আক্রমণ।</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent2)">বৈশিষ্ট্য</h4>
+          <ul>
+            <li>দুটি ধাপ</li>
+            <li>রেসিমিক মিশ্রণ উৎপন্ন</li>
+            <li>১ম ক্রম গতিবিদ্যা</li>
+            <li>কার্বোক্যাটায়ন মধ্যবর্তী</li>
+            <li>পুনর্বিন্যাস সম্ভব</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent4)">অনুকূল শর্ত</h4>
+          <ul>
+            <li>Tertiary (3°) সাবস্ট্রেট</li>
+            <li>Weak nucleophile</li>
+            <li>Polar protic দ্রাবক</li>
+            <li>স্থিতিশীল কার্বোক্যাটায়ন</li>
+          </ul>
+        </div>
+      </div>
+      <div class="formula">Rate = k[Substrate]</div>
+
+      <div class="section-title">কার্বোক্যাটায়নের স্থিতিশীলতার ক্রম</div>
+      <div class="highlight-box green">
+        3° > 2° > 1° > মিথাইল<br>
+        বেনজাইলিক ও অ্যালাইলিক কার্বোক্যাটায়ন বিশেষভাবে স্থিতিশীল (রেজোন্যান্স দ্বারা)
+      </div>
+
+      <div class="section-title">Leaving Group ক্ষমতার ক্রম</div>
+      <div class="tag-list">
+        <span class="tag-item blue">I⁻ > Br⁻ > Cl⁻ > F⁻</span>
+        <span class="tag-item green">TsO⁻ > I⁻</span>
+        <span class="tag-item purple">H₂O > OH⁻ (অ্যাসিডিক মাধ্যমে)</span>
+      </div>
+      <div class="exam-tip">SN1 বনাম SN2 তুলনা অবশ্যই পড়বেন। Stereochemistry (Inversion vs. Racemization) পরীক্ষায় প্রায়ই আসে। Walden inversion-এর চিত্র আঁকার অভ্যাস করুন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 1.2 ══════════ -->
+  <article class="chapter c2" id="ch12">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">⚡</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ১.২</div>
+        <div class="ch-name">ইলেকট্রোফিলিক প্রতিস্থাপন বিক্রিয়া (Electrophilic Substitution)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">সংজ্ঞা</div>
+      <p class="body-text">ইলেকট্রোফিলিক অ্যারোমাটিক প্রতিস্থাপন (EAS) বিক্রিয়ায় বেনজিন রিং-এর π ইলেকট্রন একটি ইলেকট্রোফাইলকে আক্রমণ করে এবং হাইড্রোজেন প্রতিস্থাপিত হয়।</p>
+
+      <div class="section-title">সাধারণ প্রক্রিয়া (দুই ধাপ)</div>
+      <ol class="steps">
+        <li>ইলেকট্রোফাইল (E⁺) বেনজিন রিং-এ আক্রমণ করে → Arenium ion (Wheland intermediate/σ-complex) গঠন</li>
+        <li>প্রোটন হারিয়ে অ্যারোমাটিকতা পুনরুদ্ধার → প্রতিস্থাপিত উৎপাদ</li>
+      </ol>
+
+      <div class="section-title">গুরুত্বপূর্ণ EAS বিক্রিয়াসমূহ</div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent2)">বিক্রিয়ার ধরন</h4>
+          <ul>
+            <li>Nitration (HNO₃/H₂SO₄)</li>
+            <li>Halogenation (X₂/Lewis acid)</li>
+            <li>Sulfonation (H₂SO₄/SO₃)</li>
+            <li>Friedel-Crafts Alkylation</li>
+            <li>Friedel-Crafts Acylation</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent5)">ইলেকট্রোফাইল</h4>
+          <ul>
+            <li>NO₂⁺ (নাইট্রোনিয়াম আয়ন)</li>
+            <li>Br⁺ / Cl⁺ (হ্যালোনিয়াম)</li>
+            <li>SO₃ (ইলেকট্রোফাইল)</li>
+            <li>R⁺ (কার্বোক্যাটায়ন)</li>
+            <li>RCO⁺ (অ্যাসাইলিয়াম)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">Directing Effects (নির্দেশক প্রভাব)</div>
+      <div class="highlight-box purple">
+        <strong>🟢 ortho/para-নির্দেশক (activation)</strong>
+        –OH, –OR, –NH₂, –NHR, –NR₂, –NHCOR, হ্যালোজেন (–F, –Cl, –Br, –I)
+      </div>
+      <div class="highlight-box">
+        <strong>🔴 meta-নির্দেশক (deactivation)</strong>
+        –NO₂, –CN, –COOH, –CHO, –COR, –SO₃H, –NR₃⁺, –CF₃
+      </div>
+      <p class="body-text">হ্যালোজেন গ্রুপ বিশেষ: deactivating কিন্তু ortho/para-নির্দেশক (–I প্রভাব > +M প্রভাব)।</p>
+      <div class="exam-tip">Friedel-Crafts বিক্রিয়ার সীমাবদ্ধতা (নাইট্রোবেনজিন, অ্যানিলিনে কাজ করে না) এবং কার্বোক্যাটায়ন পুনর্বিন্যাস সম্পর্কে প্রশ্ন আসে। Directing group-এর কারণ মুখস্থ করুন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 1.3 ══════════ -->
+  <article class="chapter c3" id="ch13">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">➕</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ১.৩</div>
+        <div class="ch-name">ইলেকট্রোফিলিক সংযোজন বিক্রিয়া (Electrophilic Addition)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">সংজ্ঞা</div>
+      <p class="body-text">অ্যালকিন বা অ্যালকাইনের π বন্ধন ভেঙে ইলেকট্রোফাইল এবং নিউক্লিওফাইল উভয়ই যুক্ত হয় — এটি ইলেকট্রোফিলিক সংযোজন বিক্রিয়া।</p>
+
+      <div class="section-title">HX সংযোজন ও Markovnikov নিয়ম</div>
+      <div class="highlight-box green">
+        <strong>📌 Markovnikov নিয়ম</strong>
+        HX সংযোজনে H⁺ সেই কার্বনে যুক্ত হয় যাতে বেশি হাইড্রোজেন আছে এবং X⁻ কম হাইড্রোজেনযুক্ত কার্বনে যায়। এর ফলে অধিক স্থিতিশীল কার্বোক্যাটায়ন মধ্যবর্তী গঠিত হয়।
+      </div>
+
+      <div class="section-title">Anti-Markovnikov সংযোজন</div>
+      <p class="body-text">Peroxide (ROOR) উপস্থিতিতে HBr-এর সংযোজন Free Radical পদ্ধতিতে হয় এবং Anti-Markovnikov নিয়ম মেনে চলে।</p>
+
+      <div class="section-title">হ্যালোজেন সংযোজন (X₂)</div>
+      <ol class="steps">
+        <li>X₂ অণু π বন্ধনে polarize হয় → cyclic halonium ion গঠন</li>
+        <li>নিউক্লিওফাইল X⁻ পেছন থেকে আক্রমণ করে (anti addition)</li>
+        <li>ফলাফল: trans (anti) ডায়াস্টেরিওমার</li>
+      </ol>
+
+      <div class="section-title">অন্যান্য গুরুত্বপূর্ণ সংযোজন</div>
+      <div class="tag-list">
+        <span class="tag-item green">H₂O + H⁺ → অ্যালকোহল (Markovnikov)</span>
+        <span class="tag-item blue">BH₃ → Hydroboration (Anti-Markovnikov, syn)</span>
+        <span class="tag-item purple">OsO₄ → syn-diol</span>
+        <span class="tag-item orange">mCPBA → Epoxide (syn)</span>
+      </div>
+      <div class="exam-tip">Syn vs Anti addition বিশেষভাবে গুরুত্বপূর্ণ। Hydroboration-oxidation-এর regiochemistry ও stereochemistry (syn, anti-Markovnikov) সম্পর্কে বিস্তারিত লিখতে পারুন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 1.4 ══════════ -->
+  <article class="chapter c4" id="ch14">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">⚖️</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ১.৪</div>
+        <div class="ch-name">জারণ-বিজারণ বিক্রিয়া (Oxidation-Reduction)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">জৈব রসায়নে জারণ-বিজারণের সংজ্ঞা</div>
+      <p class="body-text">জৈব যৌগে অক্সিজেন যুক্ত হলে বা হাইড্রোজেন বিচ্ছিন্ন হলে জারণ। অক্সিজেন বিচ্ছিন্ন হলে বা হাইড্রোজেন যুক্ত হলে বিজারণ। C–H বন্ধন → C–O বন্ধন = জারণ।</p>
+
+      <div class="section-title">জারণ বিক্রিয়া</div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent4)">অ্যালকোহলের জারণ</h4>
+          <ul>
+            <li>1° অ্যালকোহল → অ্যালডিহাইড (PCC/PDC)</li>
+            <li>1° অ্যালকোহল → কার্বক্সিলিক অ্যাসিড (KMnO₄)</li>
+            <li>2° অ্যালকোহল → কিটোন (CrO₃/H₂SO₄)</li>
+            <li>3° অ্যালকোহল → জারণ হয় না</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent3)">অ্যালকিনের জারণ</h4>
+          <ul>
+            <li>OsO₄ → syn-1,2-diol</li>
+            <li>KMnO₄ (ঠান্ডা) → syn-diol</li>
+            <li>KMnO₄ (গরম) → ক্লিভেজ</li>
+            <li>Ozonolysis → অ্যালডিহাইড/কিটোন</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">বিজারণ বিক্রিয়া</div>
+      <div class="highlight-box orange">
+        <strong>⬇️ গুরুত্বপূর্ণ বিজারক</strong>
+        LiAlH₄ (LAH) — কার্বক্সিলিক অ্যাসিড, এস্টার, অ্যালডিহাইড, কিটোন → অ্যালকোহল<br>
+        NaBH₄ — অ্যালডিহাইড ও কিটোন → অ্যালকোহল (মৃদু বিজারক)<br>
+        H₂/Pd — অ্যালকিন ও অ্যালকাইন → অ্যালকেন (Catalytic hydrogenation)
+      </div>
+
+      <div class="section-title">জারণ অবস্থার ক্রম</div>
+      <div class="formula">CH₄ → CH₃OH → CH₂O → HCOOH → CO₂</div>
+      <p class="body-text" style="text-align:center;font-size:13px;color:var(--muted)">মিথেন → মিথানল → ফর্মালডিহাইড → ফর্মিক অ্যাসিড → কার্বন ডাই অক্সাইড (ক্রমবর্ধমান জারণ)</p>
+      <div class="exam-tip">PCC ও KMnO₄-এর মধ্যে পার্থক্য এবং Ozonolysis-এর উৎপাদ নির্ধারণ করা পরীক্ষায় প্রায়ই আসে।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 2 ══════════ -->
+  <article class="chapter c2" id="ch2">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">🔗</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ২</div>
+        <div class="ch-name">সংযোজন বিক্রিয়া (Addition Reactions)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">নিউক্লিওফিলিক সংযোজন (কার্বনিল যৌগে)</div>
+      <p class="body-text">কার্বনিল গ্রুপ (C=O)-এ নিউক্লিওফাইল আক্রমণ করে সংযোজন ঘটে। কার্বনিল কার্বন ইলেকট্রনঘাটতিযুক্ত তাই নিউক্লিওফাইলের প্রতি আকৃষ্ট।</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent2)">অ্যালডিহাইড/কিটোনে সংযোজন</h4>
+          <ul>
+            <li>HCN → Cyanohydrin</li>
+            <li>NaHSO₃ → Bisulfite addition</li>
+            <li>RMgX → অ্যালকোহল (Grignard)</li>
+            <li>NH₃ ও ডেরিভেটিভ → ইমিন, অক্সিম</li>
+            <li>ROH → Hemiacetal/Acetal</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent5)">1,4-সংযোজন (Michael)</h4>
+          <ul>
+            <li>α,β-অসম্পৃক্ত কার্বনিলে</li>
+            <li>Soft nucleophile → 1,4 (Michael)</li>
+            <li>Hard nucleophile → 1,2</li>
+            <li>Michael addition গুরুত্বপূর্ণ</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">Diels-Alder সংযোজন</div>
+      <div class="highlight-box purple">
+        <strong>🔵 পেরিসাইক্লিক [4+2] সংযোজন</strong>
+        Diene (4π) + Dienophile (2π) → Cyclohexene<br>
+        • Syn addition, concerted mechanism<br>
+        • Diene অবশ্যই s-cis conformation-এ থাকতে হবে<br>
+        • Electron-withdrawing group dienophile-কে সক্রিয় করে
+      </div>
+      <div class="exam-tip">Aldol condensation এবং Diels-Alder সম্পর্কে বিস্তারিত লেখার অভ্যাস করুন। endo/exo নিয়ম এবং stereoselectivity অবশ্যই জানতে হবে।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 3 ══════════ -->
+  <article class="chapter c3" id="ch3">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">✂️</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ৩</div>
+        <div class="ch-name">অপসারণ বিক্রিয়া (Elimination Reactions)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">সংজ্ঞা</div>
+      <p class="body-text">অপসারণ বিক্রিয়ায় একটি অণু থেকে দুটি গ্রুপ (সাধারণত HX) বিচ্ছিন্ন হয়ে π বন্ধন গঠিত হয় এবং অ্যালকিন বা অ্যালকাইন তৈরি হয়।</p>
+
+      <div class="section-title">E2 বিক্রিয়া</div>
+      <div class="highlight-box green">
+        <strong>🟢 বৈশিষ্ট্য</strong>
+        • Bimolecular, concerted (একটি ধাপ)<br>
+        • Anti-periplanar geometry প্রয়োজন (H ও L পরস্পর বিপরীত দিকে, 180°)<br>
+        • Rate = k[Substrate][Base]<br>
+        • Zaitsev বা Hofmann নিয়ম অনুযায়ী উৎপাদ
+      </div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent3)">Zaitsev নিয়ম</h4>
+          <ul>
+            <li>বেশি প্রতিস্থাপিত অ্যালকিন প্রধান উৎপাদ</li>
+            <li>দুর্বল (ছোট) ক্ষারক অনুকূল</li>
+            <li>KOH/EtOH সাধারণ ক্ষারক</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent4)">Hofmann নিয়ম</h4>
+          <ul>
+            <li>কম প্রতিস্থাপিত অ্যালকিন প্রধান উৎপাদ</li>
+            <li>বাধামুক্ত, শক্তিশালী ক্ষারক অনুকূল</li>
+            <li>t-BuOK/t-BuOH বড় ক্ষারক</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">E1 বিক্রিয়া</div>
+      <p class="body-text">Unimolecular elimination — দুই ধাপে হয়। প্রথম ধাপে কার্বোক্যাটায়ন গঠন (ধীর), দ্বিতীয় ধাপে প্রোটন হারানো (দ্রুত)।</p>
+      <div class="formula">Rate = k[Substrate]</div>
+
+      <div class="section-title">E1cb বিক্রিয়া</div>
+      <p class="body-text">E1cb-তে প্রথমে carbanion মধ্যবর্তী গঠন হয়, তারপর leaving group বিচ্ছিন্ন হয়। β-কার্বনে ইলেকট্রন-আকর্ষী গ্রুপ থাকলে এই পদ্ধতি অনুসৃত হয়।</p>
+
+      <div class="section-title">অপসারণ বনাম প্রতিস্থাপন — প্রতিযোগিতা</div>
+      <div class="tag-list">
+        <span class="tag-item green">উচ্চ তাপমাত্রা → অপসারণ অনুকূল</span>
+        <span class="tag-item blue">শক্তিশালী, বাধামুক্ত ক্ষারক → E2</span>
+        <span class="tag-item orange">3° সাবস্ট্রেট → অপসারণ বেশি</span>
+        <span class="tag-item purple">দুর্বল নিউক্লিওফাইল → প্রতিস্থাপন কম</span>
+      </div>
+      <div class="exam-tip">E2-এর anti-periplanar geometry এবং cyclohexane-এ E2 শর্ত (diaxial orientation) বিশেষ গুরুত্বপূর্ণ। মেনথাইল ক্লোরাইড ও নিওমেনথাইল ক্লোরাইডের E2 উদাহরণ অবশ্যই পড়বেন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 4 ══════════ -->
+  <article class="chapter c4" id="ch4">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">🔀</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ৪</div>
+        <div class="ch-name">আণবিক পুনর্বিন্যাস (Molecular Rearrangement)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">সংজ্ঞা ও ধরন</div>
+      <p class="body-text">পুনর্বিন্যাস বিক্রিয়ায় কার্বন কঙ্কালের পরিবর্তন ঘটে — একটি গ্রুপ (H, অ্যালকাইল, অ্যারাইল) একটি কার্বন থেকে সংলগ্ন কার্বনে সরে যায়। সাধারণত 1,2-shift।</p>
+
+      <div class="section-title">Wagner-Meerwein পুনর্বিন্যাস</div>
+      <div class="highlight-box orange">
+        <strong>🔄 কার্বোক্যাটায়ন পুনর্বিন্যাস</strong>
+        1° কার্বোক্যাটায়ন → 2° কার্বোক্যাটায়ন → 3° কার্বোক্যাটায়ন<br>
+        Hydride shift (H:⁻) বা Alkyl shift<br>
+        উদ্দেশ্য: অধিক স্থিতিশীল কার্বোক্যাটায়ন গঠন
+      </div>
+
+      <div class="section-title">Pinacol পুনর্বিন্যাস</div>
+      <p class="body-text">1,2-diol (Pinacol) অ্যাসিড প্রভাবে একটি OH হারায় এবং 1,2-hydride বা alkyl shift ঘটে → কিটোন (Pinacolone) গঠিত হয়।</p>
+      <div class="formula">Pinacol → [H⁺, -H₂O] → Pinacolone (3,3-dimethyl-2-butanone)</div>
+
+      <div class="section-title">Beckmann পুনর্বিন্যাস</div>
+      <p class="body-text">কিটোক্সিম H₂SO₄ বা PCl₅-এর প্রভাবে পুনর্বিন্যস্ত হয়ে অ্যামাইড তৈরি করে। anti-গ্রুপটি নাইট্রোজেনে স্থানান্তরিত হয়।</p>
+
+      <div class="section-title">Baeyer-Villiger জারণ পুনর্বিন্যাস</div>
+      <p class="body-text">কিটোন পারঅ্যাসিড (mCPBA) দিয়ে জারিত হয়ে এস্টার দেয়। অধিক প্রতিস্থাপিত গ্রুপটি অক্সিজেনে মাইগ্রেট করে।</p>
+
+      <div class="section-title">অন্যান্য পুনর্বিন্যাস</div>
+      <div class="tag-list">
+        <span class="tag-item blue">Hofmann → অ্যামাইড → অ্যামিন</span>
+        <span class="tag-item green">Curtius → অ্যাসাইল অ্যাজাইড → আইসোসায়ানেট</span>
+        <span class="tag-item purple">Schmidt → কিটোন + HN₃ → অ্যামাইড</span>
+        <span class="tag-item orange">Wolff → কেটোকার্বিন → কেটিন</span>
+      </div>
+      <div class="exam-tip">Pinacol পুনর্বিন্যাস এবং Beckmann পুনর্বিন্যাসের কৌশল বিস্তারিতভাবে লেখার অভ্যাস করুন। Stereochemistry উল্লেখ করুন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 5 ══════════ -->
+  <article class="chapter c5" id="ch5">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">🔭</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ৫</div>
+        <div class="ch-name">কনফরমেশনাল বিশ্লেষণ ও সক্রিয়তায় প্রভাব</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">কনফর্মার ও নিউম্যান প্রজেকশন</div>
+      <p class="body-text">একই সংযোগী বিন্যাস কিন্তু বিভিন্ন C–C বন্ধনের ঘূর্ণনের ফলে ভিন্ন কনফর্মার তৈরি হয়। Newman Projection দিয়ে কনফর্মার উপস্থাপন করা হয়।</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:var(--accent5)">Ethane-এর কনফর্মার</h4>
+          <ul>
+            <li>Eclipsed — সর্বোচ্চ শক্তি (12 kJ/mol)</li>
+            <li>Staggered — সর্বনিম্ন শক্তি (সবচেয়ে স্থিতিশীল)</li>
+            <li>Torsional strain বিদ্যমান</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:var(--accent2)">Butane-এর কনফর্মার</h4>
+          <ul>
+            <li>Anti (gauche 60°) → সবচেয়ে স্থিতিশীল</li>
+            <li>Gauche (60°) → কিছুটা কম স্থিতিশীল</li>
+            <li>Eclipsed (0°) → সবচেয়ে অস্থিতিশীল</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">Cyclohexane-এর কনফর্মার</div>
+      <div class="highlight-box pink">
+        <strong>💺 Chair Conformation সবচেয়ে স্থিতিশীল</strong>
+        • Axial ও Equatorial অবস্থান<br>
+        • Ring flip-এ axial ↔ equatorial রূপান্তর<br>
+        • বড় গ্রুপ equatorial অবস্থানে পছন্দ করে<br>
+        • 1,3-diaxial interaction থেকে Steric strain উদ্ভব
+      </div>
+
+      <div class="section-title">সক্রিয়তায় কনফরমেশনের প্রভাব</div>
+      <ol class="steps">
+        <li>E2 বিক্রিয়ায় H ও L অবশ্যই anti-periplanar (180°) হতে হবে → Cyclohexane-এ diaxial orientation প্রয়োজন</li>
+        <li>SN2-এ Backside attack-এর জন্য কম steric hindrance প্রয়োজন</li>
+        <li>Conformational lock থাকলে (t-Bu group) বিক্রিয়ার হার কমতে বা বাড়তে পারে</li>
+      </ol>
+      <div class="exam-tip">Menthyl vs neomenthyl chloride-এ E2 বিক্রিয়ার তুলনা, chair conformation আঁকা এবং diaxial H-L সম্পর্ক প্রায়ই পরীক্ষায় আসে।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 6 ══════════ -->
+  <article class="chapter c6" id="ch6">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">🌀</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ৬</div>
+        <div class="ch-name">আণবিক অরবিটাল তত্ত্ব (Molecular Orbital Theory)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">মূল ধারণা</div>
+      <p class="body-text">পারমাণবিক অরবিটালের রৈখিক সংযোজন (LCAO) থেকে আণবিক অরবিটাল গঠিত হয়। n টি পারমাণবিক অরবিটাল → n টি আণবিক অরবিটাল।</p>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:#fbbf24">Bonding MO (σ, π)</h4>
+          <ul>
+            <li>পারমাণবিক অরবিটালের constructive overlap</li>
+            <li>মূল পারমাণবিক অরবিটালের চেয়ে কম শক্তি</li>
+            <li>ইলেকট্রন density নিউক্লিয়াসের মধ্যে</li>
+            <li>বন্ধন গঠনে অবদান রাখে</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:#f87171">Antibonding MO (σ*, π*)</h4>
+          <ul>
+            <li>Destructive overlap → node বিদ্যমান</li>
+            <li>মূল অরবিটালের চেয়ে বেশি শক্তি</li>
+            <li>Nodal plane নিউক্লিয়াসের মধ্যে</li>
+            <li>বন্ধন দুর্বল করে</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">HOMO ও LUMO</div>
+      <div class="highlight-box">
+        <strong>🔑 Frontier Molecular Orbitals</strong>
+        HOMO (Highest Occupied MO) — নিউক্লিওফাইল হিসেবে কাজ করে, ইলেকট্রন দান করে<br>
+        LUMO (Lowest Unoccupied MO) — ইলেকট্রোফাইল হিসেবে কাজ করে, ইলেকট্রন গ্রহণ করে<br>
+        FMO Theory — HOMO-LUMO interaction থেকে বিক্রিয়াশীলতা বোঝা যায়
+      </div>
+
+      <div class="section-title">বেনজিনের আণবিক অরবিটাল</div>
+      <p class="body-text">বেনজিনের ছয়টি p অরবিটাল → ছয়টি π MO। তিনটি bonding (ψ₁, ψ₂, ψ₃), তিনটি antibonding (ψ₄*, ψ₅*, ψ₆*)। Hückel নিয়ম: (4n+2) π ইলেকট্রন → অ্যারোমাটিক।</p>
+      <div class="highlight-box green">
+        <strong>📌 Hückel নিয়ম</strong>
+        n=0: 2π (cyclopropyl cation) | n=1: 6π (benzene) | n=2: 10π (naphthalene)<br>
+        Anti-aromatic: 4n π ইলেকট্রন (cyclobutadiene, n=1, 4π)
+      </div>
+      <div class="exam-tip">HOMO-LUMO energy gap এবং Hückel এর (4n+2) নিয়মের প্রয়োগ পরীক্ষায় গুরুত্বপূর্ণ। Butadiene ও ethylene-এর MO diagram আঁকতে পারুন।</div>
+    </div>
+  </article>
+
+  <!-- ══════════ CHAPTER 7 ══════════ -->
+  <article class="chapter c7" id="ch7">
+    <div class="chapter-header" onclick="toggleChapter(this)" role="button" aria-expanded="false">
+      <div class="ch-icon">🎯</div>
+      <div class="ch-title">
+        <div class="ch-num">অধ্যায় ৭</div>
+        <div class="ch-name">অরবিটাল প্রতিসাম্যতা ও রাসায়নিক বিক্রিয়া (Orbital Symmetry)</div>
+      </div>
+      <span class="toggle-icon">▾</span>
+    </div>
+    <div class="chapter-body">
+      <div class="section-title">Woodward-Hoffmann নিয়ম</div>
+      <p class="body-text">পেরিসাইক্লিক বিক্রিয়ার স্টেরিওকেমিস্ট্রি নির্ধারণ করা হয় HOMO-এর অরবিটাল প্রতিসাম্য দ্বারা। Orbital symmetry conservation — বিক্রিয়া অনুমোদিত কিনা তা নির্ধারণ করে।</p>
+
+      <div class="section-title">পেরিসাইক্লিক বিক্রিয়ার শ্রেণি</div>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <h4 style="color:#f87171">Electrocyclic</h4>
+          <ul>
+            <li>Linear polyene → cyclic ring</li>
+            <li>4n π-e: Thermal=disrotatory, Photo=conrotatory</li>
+            <li>4n+2 π-e: Thermal=conrotatory, Photo=disrotatory</li>
+            <li>Butadiene → Cyclobutene (উদাহরণ)</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <h4 style="color:#fbbf24">Cycloaddition</h4>
+          <ul>
+            <li>[4+2]: Thermal → allowed (Diels-Alder)</li>
+            <li>[2+2]: Thermal → forbidden, Photo → allowed</li>
+            <li>Suprafacial-suprafacial বা antarafacial</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">Sigmatropic পুনর্বিন্যাস</div>
+      <div class="highlight-box">
+        <strong>🔵 Sigmatropic Shifts</strong>
+        [1,5]-H shift: Thermal → allowed (suprafacial, aromatic TS, 6e)<br>
+        [1,3]-H shift: Thermal → forbidden<br>
+        [3,3]-shift: Thermal → allowed (Cope, Claisen rearrangement)
+      </div>
+
+      <div class="section-title">Frontier MO পদ্ধতিতে বিশ্লেষণ</div>
+      <ol class="steps">
+        <li>বিক্রিয়কের HOMO ও LUMO চিহ্নিত করুন</li>
+        <li>HOMO-LUMO overlap কি symmetry-allowed?</li>
+        <li>Suprafacial বা Antarafacial পথ নির্ধারণ করুন</li>
+        <li>Thermal বা Photochemical শর্ত বিবেচনা করুন</li>
+      </ol>
+
+      <div class="highlight-box green">
+        <strong>📋 W-H নিয়মের সারসংক্ষেপ</strong>
+        Thermal [4n+2]: supra-supra (allowed) | Thermal [4n]: supra-antara (allowed)<br>
+        Photo [4n+2]: supra-antara (allowed) | Photo [4n]: supra-supra (allowed)
+      </div>
+      <div class="exam-tip">Woodward-Hoffmann নিয়ম জৈব রসায়নের সবচেয়ে গুরুত্বপূর্ণ তত্ত্বগুলির একটি। Conrotatory/Disrotatory এর সংজ্ঞা ও উদাহরণ, [4+2] ও [2+2] এর thermal/photochemical অনুমোদন অবশ্যই মুখস্থ করুন।</div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    জাতীয় বিশ্ববিদ্যালয় · অনার্স চতুর্থ বর্ষ · বিক্রিয়ার কৌশল (Reaction Mechanism) · সম্পূর্ণ স্টাডি গাইড
+  </footer>
+
+</div>
+
+<script>
+  function toggleChapter(header) {
+    const chapter = header.closest('.chapter');
+    const isOpen = chapter.classList.toggle('open');
+    header.setAttribute('aria-expanded', isOpen);
+  }
+
+  // Fade-in chapters as they scroll into view
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.chapter').forEach(ch => {
+    ch.style.opacity = '0';
+    ch.style.transform = 'translateY(18px)';
+    ch.style.transition = 'opacity 0.55s ease, transform 0.55s ease';
+    observer.observe(ch);
+  });
+</script>
+</body>
+</html>
