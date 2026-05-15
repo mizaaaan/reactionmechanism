@@ -1,3 +1,3 @@
 # reactionmechanism
 
-visit https://mizaaaan.github.io/rectionmechanism
+visit https://mizaaaan.github.io/reactionmechanism/
